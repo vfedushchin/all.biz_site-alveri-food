@@ -1,0 +1,200 @@
+{extends file="../index.html"}
+{block name=article}{strip}
+  <div class="header_modules">
+  {if $VITRINA_BLOCKS} 
+    <script>
+  jQuery(function(){
+    jQuery('#camera_wrap_0').camera({
+      navigation: true,
+      playPause: false,
+      thumbnails: false,
+      navigationHover: false,
+      barPosition: 'top',
+      loader: false,
+      time: 3000,
+      transPeriod:800,
+      alignment: 'center',
+      autoAdvance: true,
+      mobileAutoAdvance: true,
+      barDirection: 'leftToRight', 
+      barPosition: 'bottom',
+      easing: 'easeInOutExpo',
+      fx: 'simpleFade',
+      height: '34.52535760728218%',
+      minHeight: '300px',
+      hover: true,
+      pagination: false,
+      loaderColor     : '#1f1f1f', 
+      loaderBgColor   : 'transparent',
+      loaderOpacity   : 1,
+      loaderPadding   : 0,
+      loaderStroke    : 3,
+             onLoaded      : function() {  
+       
+                $.stellar({
+                  horizontalScrolling: false,
+            
+                });              
+          
+        },
+      });
+  });
+</script>
+<div class="fluid_container">
+<div class="camera_container">
+<div id="camera_wrap_0">
+{foreach from=$VITRINA_BLOCKS item=item key=key name=showcase}
+<div  data-thumb="{$item.img_src|replace:'dev5':'biz'}" data-link="{$item.href}" data-src="{$item.img_src|replace:'dev5':'biz'}">
+</div>
+ {/foreach}
+
+</div>
+</div>
+<div class="clear"></div>
+ {/if}
+ <div class="container">
+ <div id="banner0" class="banners row">
+ <div class="banners row" id="banner0">
+<div class="col-sm-3 banner-1">
+<div class="banner-box">
+<a href="/zagrazhdenie-armirovannoe-kolyuche-lentochnoe-gg1059905" class="clearfix">
+<img class="img-responsive" alt="banner-1" src="/templates/food/image/banner-1.jpg">
+<div class="s-desc"><h2>Мясо и рыба</h2></div>
+</a>
+</div>
+</div>
+<div class="col-sm-3 banner-2">
+<div class="banner-box">
+<a href="/zagrazhdenie-armirovannoe-kolyuche-lentochnoe-gg1059905" class="clearfix">
+<img class="img-responsive" alt="banner-2" src="/templates/food/image/banner-2.jpg">
+<div class="s-desc"><h2>Овощи</h2></div>
+</a>
+</div>
+</div>
+<div class="col-sm-3 banner-3">
+<div class="banner-box">
+<a href="/zagrazhdenie-armirovannoe-kolyuche-lentochnoe-gg1059905" class="clearfix">
+<img class="img-responsive" alt="banner-3" src="/templates/food/image/banner-3.jpg">
+<div class="s-desc"><h2>Пицца и паста</h2></div>
+</a>
+</div>
+</div>
+<div class="col-sm-3 banner-4">
+<div class="banner-box">
+<a href="/zagrazhdenie-armirovannoe-kolyuche-lentochnoe-gg1059905" class="clearfix">
+<img class="img-responsive" alt="banner-4" src="/templates/food/image/banner-4.jpg">
+<div class="s-desc"><h2>Десерты</h2></div>
+</a>
+</div>
+</div>
+</div>
+ </div>
+ </div>
+{if $BLOCK_NEWS}
+ <div class="box_html welcome">
+<div class="container">
+<h2>{$BLOCK_NEWS[0].title|escape:"htmlall"}</h2>
+<p>{$BLOCK_NEWS[0].title|escape:"htmlall"} : {$BLOCK_NEWS[0].body|escape:"htmlall"} </p>
+<a href="{$BLOCK_NEWS[0].href}" class="link">Подробнее</a>
+</div></div>
+ {/if}
+
+<div class="box latest">
+<div class="container">
+<div class="box-heading">
+<h3>Товары</h3>
+</div>
+<div class="box-content">
+    <div class="row">
+     {foreach from=$GOODS_BLOCKS item=item}
+    <div class="product-layout maxheight col-sm-3 col-lg-3 col-md-3 ">
+        <div class="product-thumb transition">
+            <div class="image">
+                 <a href="{$item.href}"  class="">
+                <img src="{$item.img_src}" class="img-responsive" title="{$item.product_name}" alt="{$item.product_name}">
+                </a>
+            </div>
+
+            <div class="caption">
+                <div class="price">
+                    <span class="price-new"> {$item.price_native}  {$item.currency} </span>
+                </div>
+                <div class="name">
+                    <a href="{$item.href}">{$item.product_name}</a>
+                </div>
+            </div>
+            <div class="cart-button">
+                <a {if !$IS_SHOP_CART_ACTIVE}href="javascript: //"{/if} class="button product-btn-add addToCart {if !$IS_SHOP_CART_ACTIVE OR $TYPE <> 'goods'}b-button_type_order{/if}" id="{$item.id}" title="Add to cart" onClick="ga('send', 'event', 'CPA', 'order', 'order_button'); {if $IS_SHOP_CART_ACTIVE AND $TYPE eq 'goods'
+                  }addtocart({$item.id}, '{$smarty.const.COUNTRY_CODE}', 1);
+                  return false;{/if}">
+                   Купить                
+                </a>
+            </div>
+        </div>
+    </div>
+     {/foreach} 
+    </div>
+</div>
+</div>
+</div>
+
+{if $BLOCK_NEWS}
+<div class="parallax-box1 box_html video_block" data-stellar-background-ratio="-0.02" >
+
+ 
+    <div class="container">
+
+<h3>{$BLOCK_NEWS[1].title|escape:"htmlall"} <a class="fa fa-chevron-right" href="{$BLOCK_NEWS[1].href}"></a></h3>
+<p>{$BLOCK_NEWS[1].title|escape:"htmlall"} : {$BLOCK_NEWS[1].body|escape:"htmlall"}</p>
+</div>  
+ {/if}
+
+</div>
+
+
+<div class="box_html social">
+    <div class="container">    <ul class="social-list row">
+        <li class="col-sm-3 col-xs-6">            <a href="#" class="fa fa-twitter"></a>        </li>
+        <li class="col-sm-3 col-xs-6">            <a href="#" class="fa fa-google-plus"></a>        </li>
+        <li class="col-sm-3 col-xs-6">            <a href="#" class="fa fa-rss"></a>        </li>
+        <li class="col-sm-3 col-xs-6">            <a href="#" class="fa fa-linkedin"></a>        </li>
+    </ul>
+</div></div>
+
+
+<div id="container">
+    <div class="container">
+        <div class="row"><aside class="col-sm-3 " id="column-left">
+    
+<div class="box facebook info">
+    <div class="box-heading">
+        <h3>Facebook</h3>
+    </div>
+    <div class="box-content">
+        <div data-show-border="0" data-colorscheme="light" data-header="0" data-stream="0" data-show-faces="1" data-height="250" data-width="270" data-href="https://www.facebook.com/TemplateMonster" class="fb-like-box fb_iframe_widget" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=&amp;color_scheme=light&amp;container_width=270&amp;header=false&amp;height=250&amp;href=https%3A%2F%2Fwww.facebook.com%2FTemplateMonster&amp;locale=en_US&amp;sdk=joey&amp;show_border=false&amp;show_faces=true&amp;stream=false&amp;width=270"><span style="vertical-align: bottom; width: 270px; height: 214px;"><iframe width="270px" height="250px" frameborder="0" name="f2572e60bcc84e2" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:like_box Facebook Social Plugin" style="border: medium none; visibility: visible; width: 270px; height: 214px;" src="http://www.facebook.com/v2.2/plugins/like_box.php?app_id=&amp;channel=http%3A%2F%2Fstatic.ak.facebook.com%2Fconnect%2Fxd_arbiter%2F6brUqVNoWO3.js%3Fversion%3D41%23cb%3Df3188f5cd71e9de%26domain%3Dlivedemo00.template-help.com%26origin%3Dhttp%253A%252F%252Flivedemo00.template-help.com%252Ff32a3d05f05f5de%26relation%3Dparent.parent&amp;color_scheme=light&amp;container_width=270&amp;header=false&amp;height=250&amp;href=https%3A%2F%2Fwww.facebook.com%2FTemplateMonster&amp;locale=en_US&amp;sdk=joey&amp;show_border=false&amp;show_faces=true&amp;stream=false&amp;width=270" class=""></iframe></span></div>
+    </div>
+</div>
+
+  </aside>
+                                <div class="col-sm-9" id="content"><div class="box_html gmap">
+    <div class="map">
+      <div class="map-content">
+                        <div id="google-map" class="map_model"  data-x="{$company.longitude}" data-y="{$company.latitude}" data-zoom="15"></div>
+                        <ul class="map_locations">
+                            <li data-x="{$company.longitude}" data-y="{$company.latitude}" data-basic="/templates/food/image/gmap_marker.png" data-active="/templates/food/image/gmap_marker.png">
+                                <p> Позвоните нам <span><a href="callto:{$company.phone}">{$company.phone}</a></span></p>
+                            </li>
+                        </ul>
+                    </div>
+</div></div>
+</div>
+        </div>
+    </div>
+</div>
+
+</div>
+  
+  </div> 
+{/strip}{/block}
+
+
